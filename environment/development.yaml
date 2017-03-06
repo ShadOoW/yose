@@ -1,0 +1,43 @@
+client:
+  image: "rex_client:latest"
+  container_name: "rex-client"
+  working_dir: "/iprice/rex/client"
+  hostname: "client"
+  ports:
+    - "8180:8180"
+  environment:
+    - "REX_PATH=/iprice/rex/client"
+  volumes:
+    - "./../client:/iprice/rex/client"
+  command: "/bin/bash -c 'cd $$REX_PATH; cp .env.dev .env; npm run watch;'"
+  restart: "always"
+
+api:
+  image: "rex_api:latest"
+  container_name: "rex-api"
+  working_dir: "/iprice/rex/api"
+  hostname: "api"
+  environment:
+    - "REX_PATH=/iprice/rex/api"
+  links:
+    - "elasticsearch"
+  ports:
+    - "8008:80"
+  volumes:
+    - "./../api:/iprice/rex/api"
+    - "~/.composer:/root/.composer"
+  command: "/bin/bash -c 'cd $$REX_PATH; cp .env.dev .env; /etc/init.d/php7.0-fpm start; /usr/sbin/nginx'"
+  restart: "always"
+
+elasticsearch:
+  image: "elasticsearch:2.3"
+  container_name: "elasticsearch"
+  hostname: "elasticsearch"
+  mem_limit: "1g"
+  memswap_limit: "2g"
+  volumes:
+    - "~/iprice/rex/elastic/data:/usr/share/elasticsearch/data"
+    - "~/iprice/rex/elastic/logs:/usr/share/elasticsearch/logs"
+  ports:
+    - "9200:9200"
+  restart: "always"
