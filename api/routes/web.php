@@ -18,5 +18,5 @@ $app->get('/', function () use ($app) {
 
 $app->get('/ping', function () use ($app) {
     return response()
-        ->json(['alive' => 'true']);
+        ->json(['alive' => true]);
 });
