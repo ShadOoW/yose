@@ -10,5 +10,6 @@
     <a href="https://github.com/ShadOoW/yose">GitHub</a>
     <a id="contact-me-link" href="{{ url('contact-me') }}">Contact Us</a>
     <a id="repository-link" href="{{ url('readme') }}">Readme</a>
+    <a id="ping-challenge-link" href="{{ config('app.api') }}/ping">Portfolio - Ping</a>
   </div>
 @stop
