@@ -10,9 +10,10 @@ class Controller extends BaseController
     public function calculate(Request $request)
     {
         while (intval($request["number"]) %  2 == 0) {
-//            $num = intval($request["number"])
+            $sqrt = sqrt(intval($request["number"]));
+
             return response()
-                ->json(['number' => intval($request["number"]), 'decomposition' => [2,2,2,2]]);
+                ->json(['number' => intval($request["number"]), 'decomposition' => array_fill(0, $sqrt, 2)]);
         }
     }
 }
