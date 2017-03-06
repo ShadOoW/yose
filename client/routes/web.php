@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/readme', function () {
     return view('readme');
 });
+
+Route::get('/minesweeper', function () {
+    return view('minesweeper');
+});
