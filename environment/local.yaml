@@ -1,0 +1,56 @@
+frontend:
+ image: rex_frontend:latest
+ container_name: rex-frontend-container
+ working_dir: /iprice/rex/src
+ hostname: frontend
+ ports:
+   - 8080:80
+ environment:
+   - REX_PATH=/iprice/rex/src
+   - NGINX_HOST=localhost
+   - NGINX_PORT=80
+   - BACKEND_HOST=10.10.10.77
+   - BACKEND_PORT=8008
+ volumes:
+   - ./../frontend:/iprice/rex/src
+   - ./../frontend/dist:/usr/share/nginx/html:ro
+   - ./../frontend/docker-config:/tmp/rex
+ command: /bin/bash -c 'cd $$REX_PATH; envsubst < $$REX_PATH/server-config.json.template > $$REX_PATH/config/server-config.json; npm run clean; npm install; npm run build:prod; envsubst < /tmp/rex/nginx/rex.template > /etc/nginx/sites-available/default; nginx -g "daemon off;"'
+ restart: always
+
+backend:
+  image: rex_backend:latest
+  container_name: rex-backend-container
+  working_dir: /iprice/rex/src
+  hostname: backend
+  environment:
+    - REX_PATH=/iprice/rex/src
+    - COMPOSER_ALLOW_SUPERUSER=1
+    - ES_HOST=http://elasticsearch:9200
+    - ES_VERIFY_SSL=false
+    - WEBSOCKET_HOST=0.0.0.0
+    - WEBSOCKET_PORT=80
+    - DEBUG_LEVEL=100
+  ports:
+    - 8008:80
+  links:
+    - elasticsearch
+  volumes:
+    - ./../backend:/iprice/rex/src
+    - /tmp/rex/config:/iprice/rex/src/config
+    - ~/.composer:/root/.composer
+  command: /bin/bash -c 'cd $$REX_PATH; rm -fr bin/ vendor/; composer install --no-dev; envsubst < $$REX_PATH/config.ini.template > $$REX_PATH/config/config.ini; php server'
+  restart: always
+
+elasticsearch:
+  image: elasticsearch:2.3
+  container_name: elasticsearch
+  hostname: elasticsearch
+  mem_limit: 1g
+  memswap_limit: 2g
+  volumes:
+    - ~/iprice/rex/elastic/data:/usr/share/elasticsearch/data
+    - ~/iprice/rex/elastic/logs:/usr/share/elasticsearch/logs
+  ports:
+    - 9200:9200
+  restart: always

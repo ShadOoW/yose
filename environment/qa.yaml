@@ -1,0 +1,26 @@
+client:
+  image: "rex_client:latest"
+  container_name: "rex-client"
+  working_dir: "/iprice/rex/client"
+  hostname: "client"
+  ports:
+   - "8180:80"
+  environment:
+    - "REX_PATH=/iprice/rex/client"
+  volumes:
+    - "./../client:/iprice/rex/client"
+  command: "/bin/bash -c 'cd $$REX_PATH; cp .env.qa .env; npm run build:prod; nginx -g \"daemon off;\"'"
+  restart: "always"
+api:
+  image: "rex_api:latest"
+  container_name: "rex-api"
+  working_dir: "/iprice/rex/api"
+  hostname: "api"
+  environment:
+    - "REX_PATH=/iprice/rex/api"
+  ports:
+    - "8008:80"
+  volumes:
+    - "./../api:/iprice/rex/api"
+  command: "/bin/bash -c 'cd $$REX_PATH; cp .env.qa .env; /etc/init.d/php7.0-fpm start; /usr/sbin/nginx'"
+  restart: "always"
