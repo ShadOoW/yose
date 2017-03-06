@@ -24,8 +24,7 @@
   <meta name="theme-color" content="#ffffff">
 
   <title>Laravel</title>
-  <script src="/js/jquery.min.js" type="application/javascript"></script>
-  <script src="/js/randomColor.js" type="application/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.4.4/randomColor.min.js"></script>
   <script src="/js/grid.js" type="application/javascript"></script>
 
   <!-- Fonts -->
