@@ -228,5 +228,5 @@ return [
 
     ],
 
-    "api" => "http://api.allgerie.com"
+    "api" => "http://allgerie.com"
 ];
