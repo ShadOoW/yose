@@ -20,3 +20,12 @@ $app->get('/ping', function () use ($app) {
     return response()
         ->json(['alive' => true]);
 });
+
+$app->get('/primeFactors',  [
+    'as' => 'profile', 'uses' => 'Controller@calculate'
+]);
+
+//$app->get('/primeFactors', function () use ($app) {
+//    return response()
+//        ->json(['alive' => true]);
+//});
