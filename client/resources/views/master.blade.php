@@ -24,6 +24,8 @@
   <meta name="theme-color" content="#ffffff">
 
   <title>Laravel</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.4.4/randomColor.min.js"></script>
+  <script src="/js/grid.js" type="application/javascript"></script>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -81,6 +83,7 @@
       margin-bottom: 30px;
     }
 
+
     .members {
       padding-top: 10px;
     }
@@ -111,6 +114,24 @@
       border-radius: 20px;
     }
 
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      width: 500px;
+    }
+
+    .cell {
+      width: 62.5px;
+      height: 62.5px;
+      background-color: red;
+      border: solid 1px #333;
+    }
+
   </style>
 </head>
 <body>
@@ -130,5 +151,7 @@
     @yield('content')
   </div>
 </div>
+
+@yield('javascript')
 </body>
 </html>

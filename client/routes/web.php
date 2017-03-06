@@ -29,3 +29,7 @@ Route::get('/astroport', function () {
   return view('astroport');
 });
 
+
+Route::get('/minesweeper', function () {
+    return view('minesweeper');
+});
