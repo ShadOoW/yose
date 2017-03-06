@@ -20,6 +20,16 @@ Route::get('/readme', function () {
     return view('readme');
 });
 
+
+Route::get('/contact-me', function () {
+    return view('contact-me');
+});
+
+Route::get('/astroport', function () {
+  return view('astroport');
+});
+
+
 Route::get('/minesweeper', function () {
     return view('minesweeper');
 });

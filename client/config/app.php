@@ -228,4 +228,5 @@ return [
 
     ],
 
+    "api" => "http://api.allgerie.com"
 ];
