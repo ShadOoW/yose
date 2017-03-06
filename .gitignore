@@ -1,5 +1,5 @@
 .idea/
 client/public/fonts/
 client/public/mix-manifest.json
-client/public/js/
-client/public/css/
+client/public/js/*
+client/public/css/*
