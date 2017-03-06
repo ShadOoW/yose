@@ -11,6 +11,12 @@
 |
 */
 
+
 $app->get('/', function () use ($app) {
-    return $app->version();
+        return $app->version();
+});
+
+$app->get('/ping', function () use ($app) {
+    return response()
+        ->json(['alive' => 'true']);
 });
