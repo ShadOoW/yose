@@ -83,6 +83,38 @@
       margin-bottom: 30px;
     }
 
+
+    .members {
+      padding-top: 10px;
+    }
+    .members > span {
+      padding: 5px;
+    }
+
+    #contact-me > div > span {
+     padding: 10px;
+    }
+
+    .social {
+      padding-top: 150px;
+    }
+
+    .social > a {
+      text-decoration: none;
+      padding: 5px;
+      color: blue;
+    }
+
+    .social > span {
+      display: block;
+    }
+    .info {
+      background-color: lightcyan;
+      padding: 50px;
+      border-radius: 20px;
+    }
+
+
     * {
       box-sizing: border-box;
     }
@@ -99,6 +131,7 @@
       background-color: red;
       border: solid 1px #333;
     }
+
   </style>
 </head>
 <body>
