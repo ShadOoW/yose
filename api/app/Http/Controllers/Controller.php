@@ -18,12 +18,12 @@ class Controller extends BaseController
             $temp = pow(2, count($result));
         }
 
-        if (pow(2, count($result) == $num)) {
+        if (pow(2, count($result)) == $num) {
             return response()
                 ->json(['number' => intval($request["number"]), 'decomposition' => $result]);
         } else {
             return response()
-                ->json(['number' => intval($request["number"]), 'decomposition' => 'Not a power of 2']);
+                ->json(['number' => intval($request["number"]), 'decomposition' => 'Not a number']);
         }
     }
 }
