@@ -9,11 +9,21 @@ class Controller extends BaseController
 {
     public function calculate(Request $request)
     {
-        while (intval($request["number"]) %  2 == 0) {
-            $sqrt = sqrt(intval($request["number"]));
+        $temp = 0;
+        $result = [];
+        $num = intval($request["number"]);
 
+        while ($temp < $num) {
+            $result[] = 2;
+            $temp = pow(2, count($result));
+        }
+
+        if (pow(2, count($result) == $num)) {
             return response()
-                ->json(['number' => intval($request["number"]), 'decomposition' => array_fill(0, $sqrt, 2)]);
+                ->json(['number' => intval($request["number"]), 'decomposition' => $result]);
+        } else {
+            return response()
+                ->json(['number' => intval($request["number"]), 'decomposition' => 'Not a power of 2']);
         }
     }
 }
