@@ -27,9 +27,9 @@ class ControllerTest extends TestCase
     public function testPrimeFactorNotANumber()
     {
         $response = $this->get('/primeFactors?number=geek');
-        
+
         $response->assertJson([
-            "number" => "geek", "decomposition" => "not a number"
+            "number" => "geek", "error" => "not a number"
         ]);
     }
 
