@@ -22,7 +22,7 @@ class Controller extends BaseController
 
         } else {
             return response()
-                ->json(['number' => $request["number"], 'decomposition' => 'not a number']);
+                ->json(['number' => $request["number"], 'error' => 'not a number']);
         }
 
     }
