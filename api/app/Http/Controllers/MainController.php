@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-class MainController extends EndpointController
+class MainController extends Controller
 {
 
     public function get()

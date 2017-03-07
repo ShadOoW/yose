@@ -9,6 +9,12 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false">
+    <logging>
+        <log type="coverage-html" target="build/coverage" title="PHPUnit" highlight="true"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <!--<log type="coverage-xml" target="build/logs/coverage"/>-->
+        <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+    </logging>
     <testsuites>
         <testsuite name="Application Test Suite">
             <directory suffix="Test.php">./tests</directory>

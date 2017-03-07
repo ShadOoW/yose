@@ -3,3 +3,4 @@ client/public/fonts/
 client/public/mix-manifest.json
 client/public/js/*
 client/public/css/*
+build/
