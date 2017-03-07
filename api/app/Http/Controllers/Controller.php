@@ -9,21 +9,21 @@ class Controller extends BaseController
 {
     public function calculate(Request $request)
     {
-        $temp = 0;
-        $result = [];
         $num = intval($request["number"]);
-
-        while ($temp < $num) {
-            $result[] = 2;
-            $temp = pow(2, count($result));
-        }
-
-        if (pow(2, count($result)) == $num) {
+        if (is_numeric($request["number"])) {
+            $primes = array();
+            for ($candidate = 2; $num > 1; $candidate++) {
+                for (; $num % $candidate == 0; $num /= $candidate) {
+                    $primes[] = $candidate;
+                }
+            }
             return response()
-                ->json(['number' => intval($request["number"]), 'decomposition' => $result]);
+                ->json(['number' => intval($request["number"]), 'decomposition' => $primes]);
+
         } else {
             return response()
-                ->json(['number' => $request["number"], 'error' => 'not a number']);
+                ->json(['number' => $request["number"], 'decomposition' => 'not a number']);
         }
+
     }
 }
