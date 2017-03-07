@@ -10,20 +10,6 @@ class ControllerTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
-    {
-        $this->get('/');
-
-        $this->assertEquals(
-            $this->app->version(), $this->response->getContent()
-        );
-    }
-
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
     public function testPrimeFactorNotANumber()
     {
         $response = $this->get('/primeFactors?number=geek');
@@ -43,7 +29,7 @@ class ControllerTest extends TestCase
         $response = $this->get('/primeFactors?number=300');
 
         $response->assertJson([
-            "number" => "geek", "error" => [ 2, 2, 3, 5, 5 ]
+            "number" => "geek", "decomposition" => [ 2, 2, 3, 5, 5 ]
         ]);
     }
 
