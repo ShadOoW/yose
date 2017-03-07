@@ -33,4 +33,34 @@ class ControllerTest extends TestCase
         ]);
     }
 
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testPrimeFactorDecomposition()
+    {
+        $response = $this->get('/primeFactors?number=300');
+
+        $response->assertJson([
+            "number" => "geek", "error" => [ 2, 2, 3, 5, 5 ]
+        ]);
+    }
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testPrimeFactorBigNumberGuard()
+    {
+        $response = $this->get('/primeFactors?number=10000000');
+
+        $response->assertJson([
+            "number" => "geek", "error" => "too big number (>1e6)"
+        ]);
+    }
+
+
+
 }
