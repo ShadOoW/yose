@@ -67,8 +67,17 @@
 <body>
 <div class="flex-center position-ref full-height">
     <div class="content">
-        <div id="astroport-name">
+        <div id="astroport-name" class="title m-b-md">
             Hello Yose from Team Name team.
+        </div>
+
+        <div class="m-b-md">
+            <div id="gate-1">Gate</div>
+            <div id="gate-2">Gate Gate</div>
+            <div id="gate-3">Gate Gate Gate</div>
+            <div id="ship-1">Ship</div>
+            <div id="ship-2">Ship Ship</div>
+            <div id="ship-3">Ship Ship Ship</div>
         </div>
     </div>
 </div>
