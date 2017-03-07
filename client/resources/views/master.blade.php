@@ -125,14 +125,14 @@
       width: 500px;
     }
 
-    .cell {
+    .grid > div {
       width: 62.5px;
       height: 62.5px;
       background-color: red;
       border: solid 1px #333;
     }
 
-    .cell .lost {
+    .grid > div.lost {
       background-color: red !important;
     }
 
@@ -160,7 +160,7 @@
   function load () {
     var values = [].concat.apply([], this.document.grid);
 
-    var elements = this.document.getElementsByClassName('cell');
+    var elements = this.document.querySelectorAll('.grid > div');
     for (var i = 0 ; i < elements.length ; i++) {
       elements[i].setAttribute('data-value', values[i]);
       elements[i].onclick = function() {

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.grid .cell').each(function( index ) {
+    $('.grid > div').each(function( index ) {
         $(this).css('background-color', randomColor());
     });
 
