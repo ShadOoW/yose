@@ -156,6 +156,21 @@
   </div>
 </div>
 
+<script>
+  function load () {
+    var values = [].concat.apply([], this.document.grid);
+
+    var elements = this.document.getElementsByClassName('cell');
+    for (var i = 0 ; i < elements.length ; i++) {
+      elements[i].setAttribute('data-value', values[i]);
+      elements[i].onclick = function() {
+        if (this.getAttribute('data-value') === 'bomb') {
+          this.classList.add('lost');
+        }
+      };
+    }
+  };
+</script>
 @yield('javascript')
 </body>
 </html>
