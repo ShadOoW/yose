@@ -163,6 +163,9 @@
     var elements = this.document.querySelectorAll('.grid > div');
     for (var i = 0 ; i < elements.length ; i++) {
       elements[i].setAttribute('data-value', values[i]);
+      if (values[i] === 'bomb') {
+        elements[i].classList.add('lost');
+      }
       elements[i].onclick = function() {
         if (this.getAttribute('data-value') === 'bomb') {
           this.classList.add('lost');
