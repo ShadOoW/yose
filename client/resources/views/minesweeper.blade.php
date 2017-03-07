@@ -23,7 +23,7 @@
         ?>
       @endif
 
-      <div id="cell-{{ $row . 'x' . $column }}" class="cell">
+      <div id="cell-{{ $row . 'x' . $column }}" class="cell" data-value="0">
 
       </div>
     @endfor

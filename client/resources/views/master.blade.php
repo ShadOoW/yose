@@ -132,6 +132,10 @@
       border: solid 1px #333;
     }
 
+    .cell .lost {
+      background-color: red !important;
+    }
+
   </style>
 </head>
 <body>
