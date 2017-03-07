@@ -72,12 +72,15 @@
         </div>
 
         <div class="m-b-md">
-            <div id="gate-1">Gate</div>
-            <div id="gate-2">Gate Gate</div>
-            <div id="gate-3">Gate Gate Gate</div>
-            <div id="ship-1">Ship</div>
-            <div id="ship-2">Ship Ship</div>
-            <div id="ship-3">Ship Ship Ship</div>
+            <div id="gate-1">
+                <div id="ship-1">Ship</div>
+            </div>
+            <div id="gate-2">
+                <div id="ship-2">Ship Ship</div>
+            </div>
+            <div id="gate-3">
+                <div id="ship-3">Ship Ship Ship</div>
+            </div>
         </div>
     </div>
 </div>
