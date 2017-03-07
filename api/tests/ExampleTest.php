@@ -3,7 +3,7 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class ControllerTest extends TestCase
 {
     /**
      * A basic test example.
@@ -18,4 +18,19 @@ class ExampleTest extends TestCase
             $this->app->version(), $this->response->getContent()
         );
     }
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testPrimeFactorNotANumber()
+    {
+        $response = $this->get('/primeFactors?number=geek');
+        
+        $response->assertJson([
+            "number" => "geek", "decomposition" => "not a number"
+        ]);
+    }
+
 }

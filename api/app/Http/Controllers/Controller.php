@@ -23,7 +23,7 @@ class Controller extends BaseController
                 ->json(['number' => intval($request["number"]), 'decomposition' => $result]);
         } else {
             return response()
-                ->json(['number' => intval($request["number"]), 'decomposition' => 'Not a number']);
+                ->json(['number' => $request["number"], 'decomposition' => 'not a number']);
         }
     }
 }
