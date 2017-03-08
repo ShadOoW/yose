@@ -73,7 +73,9 @@
 
         <div class="m-b-md">
             <div id="gate-1">
-                <div id="ship-1" class="ship">--None--</div>
+                <div id="ship-1" class="ship">
+                    <input id='ship' type='text'/><button id='dock'>Dock</button>
+                </div>
             </div>
             <div id="gate-2">
                 <div id="ship-2" class="ship">--None--</div>
