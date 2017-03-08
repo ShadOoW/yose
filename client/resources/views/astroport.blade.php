@@ -75,10 +75,10 @@
             <div id="gate-1" class="free">
                 <div id="ship-1" class="ship">--None--</div>
             </div>
-            <div id="gate-2">
+            <div id="gate-2" class="free">
                 <div id="ship-2" class="ship">--None--</div>
             </div>
-            <div id="gate-3">
+            <div id="gate-3" class="free">
                 <div id="ship-3" class="ship">--None--</div>
             </div>
         </div>
