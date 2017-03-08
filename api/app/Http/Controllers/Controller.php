@@ -15,7 +15,7 @@ class Controller extends BaseController
         foreach ($numbers as $number) {
             $numberInt = is_numeric(substr($number, 7,strlen($number))) ? intval(substr($number, 7,strlen($number))) : false;
             if ($numberInt) {
-                if (strlen(substr($number, 7,strlen($number))) < 8) {
+                if (strlen(substr($number, 7,strlen($number))) < 7) {
 
                     $primes = array();
                     for ($candidate = 2; $numberInt > 1; $candidate++) {
