@@ -9,26 +9,33 @@ class Controller extends BaseController
 {
     public function calculate(Request $request)
     {
-        $num = intval($request["number"]);
-        if (is_numeric($request["number"]) && strlen($request["number"]) < 7) {
-            $primes = array();
-            for ($candidate = 2; $num > 1; $candidate++) {
-                for (; $num % $candidate == 0; $num /= $candidate) {
-                    $primes[] = $candidate;
+        //$num = intval($request["number"]);
+        $numbers = explode("&", $_SERVER['QUERY_STRING']);
+        $result = [];
+        foreach ($numbers as $number) {
+            $numberInt = is_numeric(substr($number, 7,strlen($number))) ? intval(substr($number, 7,strlen($number))) : false;
+            if ($numberInt) {
+                $primes = array();
+                for ($candidate = 2; $numberInt > 1; $candidate++) {
+                    for (; $numberInt % $candidate == 0; $numberInt /= $candidate) {
+                        $primes[] = $candidate;
+                    }
+                }
+
+                $result[] = array('number' => intval($request["number"]), 'decomposition' => $primes);
+
+            } else {
+                if (strlen($request["number"]) < 7) {
+
+                    $result[] = array('number' => $request["number"], 'error' => 'not a number');
+                } else {
+                    $result[] = array('number' => $request["number"], 'error' => 'too big number (>1e6)');
                 }
             }
-            return response()
-                ->json(['number' => intval($request["number"]), 'decomposition' => $primes]);
-
-        } else {
-            if (strlen($request["number"]) < 7) {
-                return response()
-                    ->json(['number' => $request["number"], 'error' => 'not a number']);
-            } else {
-                return response()
-                    ->json(['number' => $request["number"], 'error' => 'too big number (>1e6)']);
-            }
         }
+
+        return response()
+        ->json($result);
 
     }
 }
