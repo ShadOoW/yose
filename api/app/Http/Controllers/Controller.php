@@ -15,23 +15,24 @@ class Controller extends BaseController
         foreach ($numbers as $number) {
             $numberInt = is_numeric(substr($number, 7,strlen($number))) ? intval(substr($number, 7,strlen($number))) : false;
             if ($numberInt) {
-                $primes = array();
-                for ($candidate = 2; $numberInt > 1; $candidate++) {
-                    for (; $numberInt % $candidate == 0; $numberInt /= $candidate) {
-                        $primes[] = $candidate;
+                if (strlen(substr($number, 7,strlen($number))) < 8) {
+
+                    $primes = array();
+                    for ($candidate = 2; $numberInt > 1; $candidate++) {
+                        for (; $numberInt % $candidate == 0; $numberInt /= $candidate) {
+                            $primes[] = $candidate;
+                        }
                     }
+
+
+                    $result[] = array('number' => intval(substr($number, 7, strlen($number))), 'decomposition' => $primes);
                 }
-
-
-                $result[] = array('number' => intval(substr($number, 7,strlen($number))), 'decomposition' => $primes);
-
-            } else {
-                if (strlen($request["number"]) < 7) {
-
-                    $result[] = array('number' => substr($number, 7,strlen($number)), 'error' => 'not a number');
-                } else {
+                else {
                     $result[] = array('number' => substr($number, 7,strlen($number)), 'error' => 'too big number (>1e6)');
+
                 }
+            } else {
+                $result[] = array('number' => substr($number, 7,strlen($number)), 'error' => 'not a number');
             }
         }
 
