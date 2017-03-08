@@ -125,11 +125,15 @@
       width: 500px;
     }
 
-    .cell {
+    .grid > div {
       width: 62.5px;
       height: 62.5px;
       background-color: red;
       border: solid 1px #333;
+    }
+
+    .grid > div.lost {
+      background-color: red !important;
     }
 
   </style>
@@ -152,6 +156,40 @@
   </div>
 </div>
 
+<script>
+
+  var dummyData = [
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty']
+  ];
+
+  load();
+
+  function load () {
+    var data = this.document.grid !== undefined ? this.document.grid : dummyData;
+    console.log(this.document.grid !== undefined);
+    console.log(data);
+
+    var values = [].concat.apply([], data);
+
+    var elements = this.document.querySelectorAll('.grid > div');
+    for (var i = 0 ; i < elements.length ; i++) {
+      elements[i].setAttribute('data-value', values[i]);
+
+      elements[i].onclick = function() {
+        if (this.getAttribute('data-value') === 'bomb') {
+          this.classList.add('lost');
+        }
+      };
+    }
+  };
+</script>
 @yield('javascript')
 </body>
 </html>
