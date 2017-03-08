@@ -72,10 +72,8 @@
         </div>
 
         <div class="m-b-md">
-            <div id="gate-1">
-                <div id="ship-1" class="ship">
-                    <input id='ship' type='text'/><button id='dock'>Dock</button>
-                </div>
+            <div id="gate-1" class="free">
+                <div id="ship-1" class="ship">--None--</div>
             </div>
             <div id="gate-2">
                 <div id="ship-2" class="ship">--None--</div>
@@ -84,34 +82,44 @@
                 <div id="ship-3" class="ship">--None--</div>
             </div>
         </div>
+
+        <div class="m-b-md">
+            <input id='ship' type='text'/><button id='dock'>Dock</button>
+        </div>
+
+        <section id="info" class="m-b-md hidden">
+
+        </section>
     </div>
 </div>
 <script>
     function bootstrap() {
-        var inputItem = "<input id='ship' type='text'/><button id='dock'>Dock</button>";
-        var currentName = '';
+        //var inputItem = "<input id='ship' type='text'/><button id='dock'>Dock</button>";
         var DEFAULT_VALUE = '--None--';
-        var hasChange = false;
 
         document.addEventListener('click', function (event) {
             event.stopPropagation();
             event.preventDefault();
 
-            if (/ship/.test(event.target.className)) {
-                var $ship = document.getElementById('ship');
-                $ship && ($ship.parentNode.innerHTML = currentName || DEFAULT_VALUE); //check the result
-
-                if (!currentName || currentName === DEFAULT_VALUE || !hasChange)
-                    currentName = event.target.textContent;
-
-                event.target.innerHTML = inputItem;
-                hasChange = false;
-
-            } else if (event.target.id === 'dock') {
+            if (event.target.id === 'dock') {
+                console.log('aa');
                 var inputValue = document.getElementById('ship').value.trim();
-                event.target.parentNode.innerHTML = inputValue || DEFAULT_VALUE;
-                hasChange = true;
-                currentName = '';
+                if(!inputValue)
+                    return;
+
+                var el = document.getElementsByClassName('ship');
+                for (var i = 0; i < el.length; i++) {
+                    if (el[i].innerText == DEFAULT_VALUE) {
+                        el[i].innerText = inputValue;
+                        el[i].parentNode.classList.add("occupied");
+                        document.getElementById('info').classList.remove("hidden");
+                        document.getElementById('info').innerText += "The ship " + inputValue + " has been dock at gate " + (i + 1) + '\n';
+                        return;
+                    }
+                }
+
+                document.getElementById('ship').value ='';
+
             }
 
         });
