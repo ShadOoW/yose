@@ -22,7 +22,8 @@ class Controller extends BaseController
                     }
                 }
 
-                $result[] = array('number' => intval($numberInt), 'decomposition' => $primes);
+
+                $result[] = array('number' => intval(substr($number, 7,strlen($number))), 'decomposition' => $primes);
 
             } else {
                 if (strlen($request["number"]) < 7) {
@@ -35,7 +36,7 @@ class Controller extends BaseController
         }
 
         return response()
-        ->json($result);
+        ->json(json_decode(json_encode($result), FALSE));
 
     }
 }
