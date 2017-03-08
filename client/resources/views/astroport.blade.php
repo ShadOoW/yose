@@ -102,14 +102,13 @@
             event.preventDefault();
 
             if (event.target.id === 'dock') {
-                console.log('aa');
                 var inputValue = document.getElementById('ship').value.trim();
                 if(!inputValue)
                     return;
 
                 var el = document.getElementsByClassName('ship');
                 for (var i = 0; i < el.length; i++) {
-                    if (el[i].innerText == DEFAULT_VALUE) {
+                    if (!el[i].parentNode.classList.contains('occupied')) {
                         el[i].innerText = inputValue;
                         el[i].parentNode.classList.add("occupied");
                         document.getElementById('info').classList.remove("hidden");
