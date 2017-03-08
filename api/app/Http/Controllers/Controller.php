@@ -28,15 +28,20 @@ class Controller extends BaseController
             } else {
                 if (strlen($request["number"]) < 7) {
 
-                    $result[] = array('number' => $request["number"], 'error' => 'not a number');
+                    $result[] = array('number' => substr($number, 7,strlen($number)), 'error' => 'not a number');
                 } else {
-                    $result[] = array('number' => $request["number"], 'error' => 'too big number (>1e6)');
+                    $result[] = array('number' => substr($number, 7,strlen($number)), 'error' => 'too big number (>1e6)');
                 }
             }
         }
 
+        if(count($result) > 1)
         return response()
         ->json(json_decode(json_encode($result), FALSE));
+        else {
+            return response()
+                ->json(current($result));
+        }
 
     }
 }
