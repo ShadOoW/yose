@@ -25,6 +25,11 @@ $app->get('/primeFactors',  [
     'as' => 'profile', 'uses' => 'Controller@calculate'
 ]);
 
+
+$app->get('/fire/geek',  [
+    'as' => 'profile', 'uses' => 'Controller@geek'
+]);
+
 //$app->get('/primeFactors', function () use ($app) {
 //    return response()
 //        ->json(['alive' => true]);

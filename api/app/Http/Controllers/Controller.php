@@ -45,4 +45,19 @@ class Controller extends BaseController
         }
 
     }
+
+    public function geek(Request $request) {
+
+        $result = [
+            "map" => ['...', 'P..', '.WF'],
+            "moves" => [
+                ["dx" => 0, "dy" => 1],
+                ["dx" => 1, "dy" => 0],
+                ["dx" => 1, "dy" => 0]
+            ]
+        ];
+
+        return response()
+            ->json($result);
+    }
 }
