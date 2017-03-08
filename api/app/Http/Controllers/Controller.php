@@ -22,7 +22,7 @@ class Controller extends BaseController
                     }
                 }
 
-                $result[] = array('number' => intval($request["number"]), 'decomposition' => $primes);
+                $result[] = array('number' => intval($numberInt), 'decomposition' => $primes);
 
             } else {
                 if (strlen($request["number"]) < 7) {
