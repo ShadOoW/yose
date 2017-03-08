@@ -137,6 +137,44 @@
     }
 
   </style>
+
+  <script type="application/javascript">
+    var dummyData = [
+      ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+      ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+      ['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
+      ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+      ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+      ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+      ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+      ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty']
+    ];
+
+    function load () {
+      var data = this.document.grid !== undefined ? this.document.grid : dummyData;
+      console.log(this.document.grid !== undefined);
+      console.log(data);
+
+      var values = [].concat.apply([], data);
+
+      var elements = this.document.querySelectorAll('.grid > div');
+      for (var i = 0 ; i < elements.length ; i++) {
+        elements[i].setAttribute('data-value', values[i]);
+
+
+        elements[i].onclick = function() {
+          console.log('click');
+          if (this.getAttribute('data-value') === 'bomb') {
+            this.classList.add('lost');
+          }
+        };
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+      load();
+    });
+  </script>
 </head>
 <body>
 <div class="flex-center position-ref full-height">
@@ -156,40 +194,6 @@
   </div>
 </div>
 
-<script>
-
-  var dummyData = [
-    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-    ['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
-    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty']
-  ];
-
-  load();
-
-  function load () {
-    var data = this.document.grid !== undefined ? this.document.grid : dummyData;
-    console.log(this.document.grid !== undefined);
-    console.log(data);
-
-    var values = [].concat.apply([], data);
-
-    var elements = this.document.querySelectorAll('.grid > div');
-    for (var i = 0 ; i < elements.length ; i++) {
-      elements[i].setAttribute('data-value', values[i]);
-
-      elements[i].onclick = function() {
-        if (this.getAttribute('data-value') === 'bomb') {
-          this.classList.add('lost');
-        }
-      };
-    }
-  };
-</script>
 @yield('javascript')
 </body>
 </html>
