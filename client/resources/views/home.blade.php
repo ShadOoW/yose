@@ -7,6 +7,7 @@
 
   <div class="links">
     <a href="https://iprice.my">Team Name</a>
+    <a id="astroport" href="{{ url('astroport') }}">Astroport</a>
     <a href="https://github.com/ShadOoW/yose">GitHub</a>
     <a href="{{ url('minesweeper') }}">Minesweeper</a>
     <a id="contact-me-link" href="{{ url('contact-me') }}">Contact Us</a>
