@@ -157,8 +157,26 @@
 </div>
 
 <script>
+
+  var dummyData = [
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty']
+  ];
+
+  load();
+
   function load () {
-    var values = [].concat.apply([], this.document.grid);
+    var data = this.document.grid !== undefined ? this.document.grid : dummyData;
+    console.log(this.document.grid !== undefined);
+    console.log(data);
+
+    var values = [].concat.apply([], data);
 
     var elements = this.document.querySelectorAll('.grid > div');
     for (var i = 0 ; i < elements.length ; i++) {
