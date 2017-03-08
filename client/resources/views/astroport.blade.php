@@ -73,13 +73,13 @@
 
         <div class="m-b-md">
             <div id="gate-1" class="free">
-                <div id="ship-1" class="ship">--None--</div>
+                <div id="ship-1" class="ship"></div>
             </div>
             <div id="gate-2" class="free">
-                <div id="ship-2" class="ship">--None--</div>
+                <div id="ship-2" class="ship"></div>
             </div>
             <div id="gate-3" class="free">
-                <div id="ship-3" class="ship">--None--</div>
+                <div id="ship-3" class="ship"></div>
             </div>
         </div>
 
