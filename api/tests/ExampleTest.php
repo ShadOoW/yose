@@ -37,6 +37,26 @@ class ControllerTest extends TestCase
         ]);
     }
 
+    public function testPrimeFactorMultipleEntries()
+    {
+        $response = $this->get('/primeFactors?number=300&number=120&number=hello');
+
+        $response->assertJson([
+            [
+                "number" => 300,
+                "decomposition" => [ 2, 2, 3, 5, 5 ]
+            ],
+            [
+                "number" => 120,
+                "decomposition" => [ 2, 2, 2, 3, 5 ]
+            ],
+            [
+                "number" => "hello",
+                "decomposition" => "not a number"
+            ]
+        ]);
+    }
+
 
 
 }
